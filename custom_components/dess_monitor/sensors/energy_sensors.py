@@ -62,6 +62,8 @@ class FunctionBasedEnergySensor(MyEnergySensor):
         data = self.data
         device_data = self._inverter_device.device_data
         current_value = self._resolve_function(data, device_data)
+        if current_value is None:
+            current_value = 0
         self.update_energy_value(current_value)
 
 
